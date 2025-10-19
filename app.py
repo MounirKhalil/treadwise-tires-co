@@ -20,7 +20,7 @@ load_dotenv()
 client = OpenAI(api_key=os.getenv('OPENAI_API_KEY'))
 
 # Load business summary
-with open('Business_summary.txt', 'r') as f:
+with open('me/Business_summary.txt', 'r') as f:
     business_summary = f.read()
 
 
@@ -274,16 +274,28 @@ def chat_function(user_message, history):
     """
     global conversation_history
 
-    # Add user message to history
-    conversation_history.append({"role": "user", "content": user_message})
+    try:
+        # Add user message to history
+        conversation_history.append({"role": "user", "content": user_message})
 
-    # Get assistant response
-    assistant_response = run_conversation(conversation_history)
+        # Get assistant response
+        assistant_response = run_conversation(conversation_history)
 
-    # Add assistant response to history
-    conversation_history.append({"role": "assistant", "content": assistant_response})
+        # Ensure response is a string
+        if assistant_response is None:
+            assistant_response = "I apologize, but I encountered an issue. Please try again."
 
-    return assistant_response
+        assistant_response = str(assistant_response)
+
+        # Add assistant response to history
+        conversation_history.append({"role": "assistant", "content": assistant_response})
+
+        return assistant_response
+
+    except Exception as e:
+        error_msg = f"I apologize, but I encountered an error: {str(e)}"
+        print(f"Error in chat_function: {e}")
+        return error_msg
 
 
 # Create Gradio interface

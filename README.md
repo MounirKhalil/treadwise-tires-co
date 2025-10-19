@@ -4,6 +4,8 @@
 **ID:** 202100437
 **Course:** EECE798S Agentic Systems
 
+🚀 **Live Demo:** [https://huggingface.co/spaces/mmk113/treadwise-tire-chatbot](https://huggingface.co/spaces/mmk113/treadwise-tire-chatbot)
+
 ## Overview
 
 An AI-powered chatbot for TreadWise Tire Co., a modern tire company combining smart technology, mobile service, and sustainability. The agent can answer questions about the business, collect customer leads, and log feedback for questions it cannot answer.
@@ -22,8 +24,9 @@ TreadWise Tire Co. is a tire company built for today's drivers and fleets. Our m
 
 ```
 treadwise-tires-co/
-├── About_business.pdf          # Detailed business profile
-├── Business_summary.txt         # Short business summary
+├── me/
+│   ├── About_business.pdf       # Detailed business profile
+│   └── Business_summary.txt     # Short business summary
 ├── Business_agent.ipynb         # Main chatbot implementation (Jupyter)
 ├── app.py                       # Deployment script for Gradio
 ├── requirements.txt             # Python dependencies
@@ -137,13 +140,28 @@ This will launch a Gradio interface accessible via a local URL and a shareable p
 ## Deployment
 
 ### Local Deployment
-Run `app.py` to launch locally with a shareable Gradio link.
+Run `app.py` to launch locally with a shareable Gradio link:
 
-### HuggingFace Spaces (Bonus)
-1. Create a new Space on HuggingFace
-2. Upload all files except `.env`
-3. Add `OPENAI_API_KEY` as a Space secret
-4. The app will automatically deploy
+```bash
+cd treadwise-tires-co
+python app.py
+```
+
+### HuggingFace Spaces Deployment (COMPLETED ✅)
+
+**Live Application:** [https://huggingface.co/spaces/mmk113/treadwise-tire-chatbot](https://huggingface.co/spaces/mmk113/treadwise-tire-chatbot)
+
+The chatbot has been successfully deployed to HuggingFace Spaces with:
+- All project files uploaded in correct structure
+- `OPENAI_API_KEY` configured as a secure Space secret
+- Public access for anyone to try the TreadWise AI assistant
+- Automatic deployment and hosting
+
+**Deployment Steps Used:**
+1. Created a new Gradio Space on HuggingFace
+2. Uploaded files maintaining the `me/` folder structure
+3. Added `OPENAI_API_KEY` as a repository secret
+4. Space automatically built and deployed
 
 ## Assignment Requirements Checklist
 
@@ -162,7 +180,7 @@ Run `app.py` to launch locally with a shareable Gradio link.
 - [x] `requirements.txt` created
 - [x] `.env` file setup (not committed)
 - [x] Tools actually called by the model
-- [ ] Deployed to HuggingFace Spaces (optional bonus)
+- [x] **Deployed to HuggingFace Spaces (BONUS COMPLETED ✅)**
 
 ## Author
 
